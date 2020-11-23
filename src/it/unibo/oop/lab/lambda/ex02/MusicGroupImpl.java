@@ -50,8 +50,10 @@ public final class MusicGroupImpl implements MusicGroup {
 
     @Override
     public int countSongs(final String albumName) {
-        return (int) this.songs.stream().filter(x -> x.albumName.isPresent())
-                .filter(x -> x.albumName.get().equals(albumName)).count();
+        return (int) this.songs.stream()
+                .filter(x -> x.albumName.isPresent())
+                .filter(x -> x.albumName.get().equals(albumName))
+                .count();
     }
 
     @Override
@@ -84,11 +86,8 @@ public final class MusicGroupImpl implements MusicGroup {
     @Override
     public Optional<String> longestAlbum() {
         
-        
         return this.albums.keySet().stream()
-                .max((x, y) -> (int)(albumDuration(x) - albumDuration(y)));      
-
-
+                .max((x, y) -> (int)(albumDuration(x) - albumDuration(y)));
     }
 
     private static final class Song {
