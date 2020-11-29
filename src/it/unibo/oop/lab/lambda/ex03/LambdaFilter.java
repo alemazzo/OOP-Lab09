@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.awt.Paint;
 import java.awt.Toolkit;
 import java.util.function.Function;
 
@@ -14,6 +15,12 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.LowerCase;
+
+import sun.awt.www.content.audio.x_aiff;
+
+import java.util.*;
 
 /**
  * Modify this small program adding new filters.
@@ -35,8 +42,9 @@ public final class LambdaFilter extends JFrame {
     private static final long serialVersionUID = 1760990730218643730L;
 
     private enum Command {
-        IDENTITY("No modifications", Function.identity());
+        IDENTITY("No modifications", Function.identity()),
 
+    	
         private final String commandName;
         private final Function<String, String> fun;
 
@@ -45,7 +53,8 @@ public final class LambdaFilter extends JFrame {
             fun = process;
         }
 
-        @Override
+
+		@Override
         public String toString() {
             return commandName;
         }
@@ -81,6 +90,7 @@ public final class LambdaFilter extends JFrame {
         final int sh = (int) screen.getHeight();
         setSize(sw / 4, sh / 4);
         setLocationByPlatform(true);
+        
     }
 
     /**
