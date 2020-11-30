@@ -18,7 +18,6 @@ import javax.swing.JTextArea;
 
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.LowerCase;
 
-import sun.awt.www.content.audio.x_aiff;
 
 import java.util.*;
 
@@ -41,8 +40,25 @@ public final class LambdaFilter extends JFrame {
 
     private static final long serialVersionUID = 1760990730218643730L;
 
+    
     private enum Command {
+    	
         IDENTITY("No modifications", Function.identity()),
+        COUNTWORDS("Count words", s -> {
+        	return s;
+        	// return new ArrayList<String>(s.split("[\\n\\s\\r]+"))
+        	//		.stream();
+        }),
+        LISTWORDS("List words in alphabetical order", s -> {
+        	return s;
+        }),
+        COUNTLINES("Count Lines", s -> {
+        	return Long.toString(s.lines().count());
+        }),
+        LOWERCASE("Lowercase", (String s) -> {
+        	return s.toLowerCase();
+        });
+
 
     	
         private final String commandName;
