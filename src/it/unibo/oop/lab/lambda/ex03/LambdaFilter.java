@@ -44,20 +44,17 @@ public final class LambdaFilter extends JFrame {
     private enum Command {
     	
         IDENTITY("No modifications", Function.identity()),
-        COUNTWORDS("Count words", s -> {
-        	return s;
-        	// return new ArrayList<String>(s.split("[\\n\\s\\r]+"))
-        	//		.stream();
-        }),
-        LISTWORDS("List words in alphabetical order", s -> {
-        	return s;
-        }),
         COUNTLINES("Count Lines", s -> {
         	return Long.toString(s.lines().count());
         }),
+        
         LOWERCASE("Lowercase", (String s) -> {
         	return s.toLowerCase();
-        });
+        }),
+        
+        WORDS("Sort words in alphabetical order", s -> s),
+        
+	    WORDCOUNT("Count words", s -> s);
 
 
     	
